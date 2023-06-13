@@ -1,5 +1,8 @@
 # Password Generator Project
 import random
+import os
+import sys
+
 from art import logo
 
 
@@ -10,7 +13,19 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
+def clear_screen():
+    """
+    Clear the console for Windows or Linux
+    """
+    # Windows
+    clear = lambda: os.system("cls")
+    clear()
+    # Linux
+    # clear = lambda os.system("clear")
+    # clear()
 
+
+clear_screen()
 print(logo)
 print("Welcome to the PyPassword Generator!")
 print("You can choose how many:"
@@ -131,3 +146,13 @@ elif nr_symbols == 0:
           "Password is not safe.")
 else:
     print("Password is safe.")
+
+# Exit the program
+valid_input = False
+
+while not valid_input:
+    exit_program = input("\nPress X to quit: ").lower()
+
+    if exit_program == "x":
+        clear_screen()
+        sys.exit()
